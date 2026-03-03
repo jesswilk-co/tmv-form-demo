@@ -186,6 +186,7 @@ export default function BookingForm() {
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     color: "#1e293b",
     padding: "40px 24px",
+    WebkitTapHighlightColor: "transparent",
   };
 
   const headingStyle = {
@@ -242,7 +243,7 @@ export default function BookingForm() {
   const inputStyle = (hasError) => ({
     width: "100%",
     padding: "12px 14px",
-    fontSize: 15,
+    fontSize: 16,
     border: `1.5px solid ${hasError ? errorColor : "#d1d5db"}`,
     borderRadius: 10,
     outline: "none",
@@ -268,7 +269,7 @@ export default function BookingForm() {
   // ── Confirmation ──
   if (submitted) {
     return (
-      <div style={containerStyle}>
+      <div className="form-container" style={containerStyle}>
         <div
           style={{
             textAlign: "center",
@@ -276,7 +277,7 @@ export default function BookingForm() {
           }}
         >
           <div style={{ fontSize: 56, marginBottom: 16 }}>✓</div>
-          <h2 style={{ ...headingStyle, fontSize: 24, marginBottom: 8 }}>
+          <h2 className="form-heading" style={{ ...headingStyle, fontSize: 24, marginBottom: 8 }}>
             Booking request sent!
           </h2>
           <p style={{ ...subStyle, marginBottom: 32, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>
@@ -306,6 +307,7 @@ export default function BookingForm() {
                 ],
               ].map(([l, v]) => (
                 <div
+                  className="summary-row"
                   key={l}
                   style={{
                     display: "flex",
@@ -350,7 +352,7 @@ export default function BookingForm() {
   const totalSteps = 5;
 
   return (
-    <div style={containerStyle}>
+    <div className="form-container" style={containerStyle}>
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: accent, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>
@@ -363,7 +365,7 @@ export default function BookingForm() {
       {/* Step 0: Category */}
       {step === 0 && (
         <div>
-          <h2 style={headingStyle}>What's going on with your pet?</h2>
+          <h2 className="form-heading" style={headingStyle}>What's going on with your pet?</h2>
           <p style={subStyle}>
             Pick the option that best describes your situation — don't worry,
             you don't need to be exact.
@@ -407,7 +409,7 @@ export default function BookingForm() {
       {/* Step 1: Specific type */}
       {step === 1 && selectedCategory && (
         <div>
-          <h2 style={headingStyle}>Can you be more specific?</h2>
+          <h2 className="form-heading" style={headingStyle}>Can you be more specific?</h2>
           <p style={subStyle}>This helps our vets prepare for the visit.</p>
           <div style={{ display: "grid", gap: 10 }}>
             {selectedCategory.types.map((type) => (
@@ -449,12 +451,13 @@ export default function BookingForm() {
       {/* Step 2: Pet info */}
       {step === 2 && (
         <div>
-          <h2 style={headingStyle}>Tell us about your pet</h2>
+          <h2 className="form-heading" style={headingStyle}>Tell us about your pet</h2>
           <p style={subStyle}>So we know who we're visiting!</p>
 
           <div style={{ marginBottom: 20 }}>
             <label style={labelStyle}>What kind of pet?</label>
             <div
+              className="species-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
@@ -545,7 +548,7 @@ export default function BookingForm() {
       {/* Step 3: Owner info */}
       {step === 3 && (
         <div>
-          <h2 style={headingStyle}>Your details</h2>
+          <h2 className="form-heading" style={headingStyle}>Your details</h2>
           <p style={subStyle}>
             We'll use this to confirm your booking.
           </p>
@@ -612,7 +615,7 @@ export default function BookingForm() {
       {/* Step 4: Date & Time */}
       {step === 4 && (
         <div>
-          <h2 style={headingStyle}>When works for you?</h2>
+          <h2 className="form-heading" style={headingStyle}>When works for you?</h2>
           <p style={subStyle}>
             Pick a preferred date and time — we'll confirm availability.
           </p>
