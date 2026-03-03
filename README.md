@@ -3,12 +3,19 @@ Goto https://jesswilk-co.github.io/tmv-form-demo
 
 ## Running the project locally
 
-Using NPM to produce the output:
+Install dependencies (including esbuild) and build:
 
 ```bash
-npm init -y
-npm install react react-dom
-esbuild booking-form.jsx --bundle --outfile=out.js
+npm install
+npm run build
 ```
 
-The `index.html` file points to this so is all ready to go.
+This will create a `dist` folder containing `index.html` and `out.js`. You can serve this folder with any static file server to preview the production build.
+
+## Deployment
+
+Deployment to GitHub Pages is handled automatically via a GitHub Actions workflow:
+
+- On pushes to the `main` branch, GitHub Actions runs `npm install` and `npm run build`.
+- The contents of the `dist` directory (only `index.html` and `out.js`) are uploaded as a GitHub Pages artifact.
+- A separate deploy job publishes that artifact to GitHub Pages, serving the demo at the URL above.
