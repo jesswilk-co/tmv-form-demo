@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
 
 const CATEGORIES = [
   {
@@ -716,4 +717,11 @@ export default function BookingForm() {
       )}
     </div>
   );
+}
+
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(<BookingForm />);
 }
